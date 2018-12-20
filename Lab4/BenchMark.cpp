@@ -13,23 +13,23 @@
 
 int main()
 {
-	const int initSize = 5;
-	int initArr[][initSize] =
-	{
-		0, 0, 0, 0, 0,
-		0, 0, 1, 0, 0,
-		0, 0, 0, 1, 0,
-		0, 1, 1, 1, 0,
-		0, 0, 0, 0, 0,
-	};
+	//const int initSize = 5;
+	//int initArr[][initSize] =
+	//{
+	//	0, 0, 0, 0, 0,
+	//	0, 0, 1, 0, 0,
+	//	0, 0, 0, 1, 0,
+	//	0, 1, 1, 1, 0,
+	//	0, 0, 0, 0, 0,
+	//};
 
-	LifeGame *t = new  LifeGame(initSize, initArr);
-	cout << "The inital state :" << endl;
-	t->Display(3);
-	cout << endl;
-	//不能连接时到8不会再改变
-	//能够连接时到20为一个周期
-	t->Simulation(20, 2, 3);
-	system("pause");
+	//LifeGame *t = new  LifeGame(initSize, initArr);
+	//cout << "The inital state :" << endl;
+	//t->Display(3);
+	//cout << endl;
+	////不能连接时到8不会再改变
+	////能够连接时到20为一个周期
+	//t->Simulation(20, 2, 3);
+	//system("pause");
 	return 0;
 }
