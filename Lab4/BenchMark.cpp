@@ -6,30 +6,30 @@
 * @version 1.00 2018/12/19 Creation
 *
 * @note This .cpp file is used to testing.
-*	     Github: https://github.com/Soplia.
+*	     Github: https://github.com/Soplia/LifeGame
 *           Copyright  2018 Jiarui XIE. All rights reserved.
 */
-#include "LifeGame.h"
+#include "AgentGame.h"
+
+void Display(double arr[][MRX_SIZE_RULE])
+{
+	for (int i = 0; i < MRX_SIZE_RULE; i++)
+	{
+		for (int j = 0; j < MRX_SIZE_RULE; j++)
+			printf("%5.2f,", arr[i][j]);
+		cout << endl;
+	}
+}
 
 int main()
 {
-	//const int initSize = 5;
-	//int initArr[][initSize] =
-	//{
-	//	0, 0, 0, 0, 0,
-	//	0, 0, 1, 0, 0,
-	//	0, 0, 0, 1, 0,
-	//	0, 1, 1, 1, 0,
-	//	0, 0, 0, 0, 0,
-	//};
+	double arr[MRX_SIZE_RULE][MRX_SIZE_RULE] = { 0.0 };
+	//arr[0][0] = -1;
 
-	//LifeGame *t = new  LifeGame(initSize, initArr);
-	//cout << "The inital state :" << endl;
-	//t->Display(3);
-	//cout << endl;
-	////不能连接时到8不会再改变
-	////能够连接时到20为一个周期
-	//t->Simulation(20, 2, 3);
-	//system("pause");
+	for (int i = 1; i < 5; i++)
+		for (int j = 1; j < 5 && j < MRX_SIZE_RULE - i; j++)
+			arr[i][j] = (double)j / (double)(i + j) + 0.1;
+	Display(arr);
+	system("pause");
 	return 0;
 }

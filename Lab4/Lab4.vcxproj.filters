@@ -21,12 +21,18 @@
     <ClCompile Include="LifeGame.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="AgentGame.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LifeGame.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Constant.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="AgentGame.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

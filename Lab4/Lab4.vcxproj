@@ -143,10 +143,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AgentGame.cpp" />
     <ClCompile Include="BenchMark.cpp" />
     <ClCompile Include="LifeGame.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AgentGame.h" />
     <ClInclude Include="Constant.h" />
     <ClInclude Include="LifeGame.h" />
   </ItemGroup>

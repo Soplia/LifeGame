@@ -17,30 +17,30 @@
 using namespace std;
 
 /**
-* @class LifeGame 
+* @class AgentGame
 * @brief  Implement a game of life in "text" mode, test it with a glider.
-* @note 
+* @note
 * Can be run under two modes: without torus neighbourhood and with a torus universe.
 * There are three display formats: display status only / display the number of neighbourhood only and display
 * them at the same time.
 */
-class LifeGame
+class AgentGame
 {
 public:
 	/** @brief A Constructor.
 	*    @param[in] size the size of the matrix.
 	*/
-	LifeGame(int size);
-	
+	AgentGame(int size);
+
 	/** @brief A Constructor.
 	*    @param[in] size the size of the matrix.
 	*    @param[in] a the source matrix.
 	*/
-	LifeGame(int size, int  a[][MATRIX_SIZE_LIFEGAME]);
-	
+	AgentGame(int size, int  a[][MRX_SIZE_AGENTGAME]);
+
 	/** @brief  A Deconstructor. */
-	~LifeGame();
-	
+	~AgentGame();
+
 	/** @brief  Assign zero to  _state & _neigh . */
 	void InitValue();
 
@@ -64,7 +64,7 @@ public:
 	*    @param[in] y the y_index of _state.
 	*    @param[in] type 1: without torus, 2: with torus.
 	*/
-	void CountNeighbour(int x, int y, int type); 
+	void CountNeighbour(int x, int y, int type);
 
 	/** @brief  Apply CountNeighbour function to the whole of _state metirx.
 	*    @param[in] type 1: without torus, 2: with torus.
@@ -88,10 +88,10 @@ public:
 
 	/** @brief  Whether x inside the bound or not.
 	*    @param[in] x the value to be judged.
-	*    @return 0: outside the bound, 1: inside the bound 
+	*    @return 0: outside the bound, 1: inside the bound
 	*/
 	bool InBound(int x);
-	
+
 	/** @brief Simulation.
 	*    @param[in] times simulation times.
 	*    @param[in] type 1: without torus, 2: with torus.
@@ -102,7 +102,7 @@ public:
 public:
 	/** @brief  Stock for State . */
 	int **_state;
-	
+
 	/** @brief  Stock for neighborhood number. */
 	int **_neigh;
 

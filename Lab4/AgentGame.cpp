@@ -10,12 +10,12 @@
 *           Copyright  2018 Jiarui XIE. All rights reserved.
 */
 
-#include "LifeGame.h"
+#include "AgentGame.h"
 
 /** @brief A Constructor.
 *    @param[in] size the size of the matrix.
 */
-LifeGame::LifeGame(int size)
+AgentGame::AgentGame(int size)
 {
 	_size = size;
 	_state = new int *[size];
@@ -33,7 +33,7 @@ LifeGame::LifeGame(int size)
 *    @param[in] size the size of the matrix.
 *    @param[in] a the source matrix.
 */
-LifeGame::LifeGame(int size, int a[][MATRIX_SIZE_LIFEGAME])
+AgentGame::AgentGame(int size, int a[][MRX_SIZE_AGENTGAME])
 {
 	_size = size;
 	_state = new int *[size];
@@ -52,7 +52,7 @@ LifeGame::LifeGame(int size, int a[][MATRIX_SIZE_LIFEGAME])
 }
 
 /** @brief  A Deconstructor. */
-LifeGame::~LifeGame()
+AgentGame::~AgentGame()
 {
 	for (int i = 0; i < _size; i++)
 	{
@@ -64,7 +64,7 @@ LifeGame::~LifeGame()
 }
 
 /** @brief  Assign zero to  _state & _neigh . */
-void LifeGame::InitValue()
+void AgentGame::InitValue()
 {
 	for (int i = 0; i < _size; i++)
 		for (int j = 0; j < _size; j++)
@@ -75,7 +75,7 @@ void LifeGame::InitValue()
 }
 
 /** @brief  Assign zero to  _neigh . */
-void LifeGame::ClearNeigh()
+void AgentGame::ClearNeigh()
 {
 	for (int i = 0; i < _size; i++)
 		for (int j = 0; j < _size; j++)
@@ -85,57 +85,57 @@ void LifeGame::ClearNeigh()
 /** @brief  Display the content of _state & _neigh,  empty: ¨‘  populated: ¡ö.
 *    @param[in] type 1: display _state only 2: display _neigh only 3: display _state & _neigh
 */
-void LifeGame::Display(int type)
+void AgentGame::Display(int type)
 {
 	switch (type)
 	{
-		case 1:
+	case 1:
+	{
+		cout << "The contents of _state:" << endl;
+		for (int i = 0; i < _size; i++)
 		{
-			cout << "The contents of _state:" << endl;
-			for (int i = 0; i < _size; i++)
-			{
-				for (int j = 0; j < _size; j++)
-					if (_state[i][j] == 1)
-						cout << "¡ö";
-					else if (_state[i][j] == 0) //  ¡ï ¨‘ ¡õ  ¡ö
-						cout << "¨‘";
-				cout << endl;
-			}
-		}break;
-		case 2:
-		{
-			cout << "The contents of _neigh:" << endl;
-			for (int i = 0; i < _size; i++)
-			{
-				for (int j = 0; j < _size; j++)
-					cout << _neigh[i][j] << " ";
-				cout << endl;
-			}
-		}break;
-		case 3:
-		{
-			cout << "The contents of _state & _neigh:" << endl;
-			for (int i = 0; i < _size; i++)
-			{
-				for (int j = 0; j < _size; j++)
-					if (_state[i][j] == 1)
-						cout << "¡ö";
-					else if (_state[i][j] == 0) //  ¡ï ¨‘ ¡õ  ¡ö
-						cout << "¨‘";
-				cout << endl;
-			}
+			for (int j = 0; j < _size; j++)
+				if (_state[i][j] == 1)
+					cout << "¡ö";
+				else if (_state[i][j] == 0) //  ¡ï ¨‘ ¡õ  ¡ö
+					cout << "¨‘";
 			cout << endl;
-			for (int i = 0; i < _size; i++)
-			{
-				for (int j = 0; j < _size; j++)
-					cout << _neigh[i][j] << " ";
-				cout << endl;
-			}
-			system("pause");
-			system("cls");
+		}
+	}break;
+	case 2:
+	{
+		cout << "The contents of _neigh:" << endl;
+		for (int i = 0; i < _size; i++)
+		{
+			for (int j = 0; j < _size; j++)
+				cout << _neigh[i][j] << " ";
+			cout << endl;
+		}
+	}break;
+	case 3:
+	{
+		cout << "The contents of _state & _neigh:" << endl;
+		for (int i = 0; i < _size; i++)
+		{
+			for (int j = 0; j < _size; j++)
+				if (_state[i][j] == 1)
+					cout << "¡ö";
+				else if (_state[i][j] == 0) //  ¡ï ¨‘ ¡õ  ¡ö
+					cout << "¨‘";
+			cout << endl;
+		}
+		cout << endl;
+		for (int i = 0; i < _size; i++)
+		{
+			for (int j = 0; j < _size; j++)
+				cout << _neigh[i][j] << " ";
+			cout << endl;
+		}
+		system("pause");
+		system("cls");
 
-		}break;
-		default: cout << "Input the right type (1¡¢2¡¢3) :" << endl;
+	}break;
+	default: cout << "Input the right type (1¡¢2¡¢3) :" << endl;
 	}
 }
 
@@ -144,7 +144,7 @@ void LifeGame::Display(int type)
 *    @param[in] y the y_index of _state.
 *    @param[in] aim the source value.
 */
-void LifeGame::ChangeState(int x, int y, int aim)
+void AgentGame::ChangeState(int x, int y, int aim)
 {
 	_state[x][y] = aim;
 }
@@ -153,7 +153,7 @@ void LifeGame::ChangeState(int x, int y, int aim)
 *    @param[in] x the value to be judged.
 *    @return 0: outside the bound, 1: inside the bound
 */
-bool LifeGame::InBound(int x)
+bool AgentGame::InBound(int x)
 {
 	return (x >= 0 && x < _size);
 }
@@ -163,7 +163,7 @@ bool LifeGame::InBound(int x)
 *    @param[in] y the y_index of _state.
 *    @param[in] type 1: without torus, 2: with torus.
 */
-void LifeGame::CountNeighbour(int x, int y, int type)
+void AgentGame::CountNeighbour(int x, int y, int type)
 {
 	for (int i = 0; i <= 2; i++)
 	{
@@ -210,7 +210,7 @@ void LifeGame::CountNeighbour(int x, int y, int type)
 			}
 		}
 	}
-	if(_state[x][y])
+	if (_state[x][y])
 		_neigh[x][y]--; //³ýÈ¥×Ô¼º
 }
 
@@ -218,7 +218,7 @@ void LifeGame::CountNeighbour(int x, int y, int type)
 *    @param[in] x the x_index of _state.
 *    @param[in] y the y_index of _state.
 */
-void LifeGame::UpdateState(int x, int y)
+void AgentGame::UpdateState(int x, int y)
 {
 	_state[x][y] = CalculateState(x, y);
 }
@@ -227,7 +227,7 @@ void LifeGame::UpdateState(int x, int y)
 *    @param[in] x the x_index of _neigh.
 *    @param[in] y the y_index of _neigh.
 */
-int LifeGame::CalculateState(int x, int y)
+int AgentGame::CalculateState(int x, int y)
 {
 	if (_state[x][y])
 		return _neigh[x][y] >= 2 && _neigh[x][y] <= 3 ? 1 : 0;
@@ -238,7 +238,7 @@ int LifeGame::CalculateState(int x, int y)
 /** @brief  Apply CountNeighbour function to the whole of _state metirx.
 *    @param[in] type 1: without torus, 2: with torus.
 */
-void LifeGame::ChangeNeighbourWhole(int type)
+void AgentGame::ChangeNeighbourWhole(int type)
 {
 	for (int i = 0; i < _size; i++)
 		for (int j = 0; j < _size; j++)
@@ -246,7 +246,7 @@ void LifeGame::ChangeNeighbourWhole(int type)
 }
 
 /** @brief  Update_state. */
-void LifeGame::UpdateStateWhole()
+void AgentGame::UpdateStateWhole()
 {
 	for (int i = 0; i < _size; i++)
 		for (int j = 0; j < _size; j++)
@@ -258,7 +258,7 @@ void LifeGame::UpdateStateWhole()
 *    @param[in] type 1: without torus, 2: with torus.
 *    @param[in] typeOfDis display type.
 */
-void LifeGame::Simulation(int times, int type, int typeOfDis)
+void AgentGame::Simulation(int times, int type, int typeOfDis)
 {
 	for (int i = 0; i < times; i++)
 	{
