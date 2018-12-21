@@ -14,6 +14,7 @@
 #include <iostream>
 #include <cstdlib>
 #include "Constant.h"
+#include "MTRandom.h"
 using namespace std;
 
 /**
@@ -41,10 +42,10 @@ public:
 	/** @brief  A Deconstructor. */
 	~AgentGame();
 
-	/** @brief  Assign zero to  _state & _neigh . */
+	/** @brief  Assign zero to  _state & _neighPrey & _neighPdator . */
 	void InitValue();
 
-	/** @brief  Assign zero to  _neigh . */
+	/** @brief  Assign zero to  _neighPrey & _neighPdator. */
 	void ClearNeigh();
 
 	/** @brief  Display the content of _state & _neigh,  empty: ¨‘  populated: ¡ö.
@@ -57,7 +58,7 @@ public:
 	*    @param[in] y the y_index of _state.
 	*    @param[in] aim the source value.
 	*/
-	void ChangeState(int x, int y, int aim);
+	void SetState(int x, int y, int aim);
 
 	/** @brief Count the number of _state[x][y]'s neighbourhood.
 	*    @param[in] x the x_index of _state.
@@ -69,11 +70,11 @@ public:
 	/** @brief  Apply CountNeighbour function to the whole of _state metirx.
 	*    @param[in] type 1: without torus, 2: with torus.
 	*/
-	void  ChangeNeighbourWhole(int type);
+	void  UpdateNeighWhole(int type);
 
 	/** @brief According the neighbourhood number of (x,y) to change  _state[x][y] .
-	*    @param[in] x the x_index of _neigh.
-	*    @param[in] y the y_index of _neigh.
+	*    @param[in] x the x_index of _neighPrey & _neighPdator.
+	*    @param[in] y the y_index of _neighPrey & _neighPdator.
 	*/
 	int CalculateState(int x, int y);
 
@@ -103,9 +104,15 @@ public:
 	/** @brief  Stock for State . */
 	int **_state;
 
-	/** @brief  Stock for neighborhood number. */
-	int **_neigh;
+	/** @brief  Stock for prey neighborhood number. */
+	int **_neighPrey;
+
+	/** @brief  Stock for predator neighborhood number. */
+	int **_neighPdator;
 
 	/** @brief  Keep the size of  _state & _neigh. */
 	int _size;
+
+	/** @brief  Random numbers generator. */
+	MTRandom _rdm;
 };
