@@ -25,6 +25,7 @@ using namespace std;
 * There are three display formats: display status only / display the number of neighbourhood only and display
 * them at the same time.
 */
+
 class AgentGame
 {
 public:

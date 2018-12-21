@@ -58,7 +58,7 @@ AgentGame::AgentGame(int size, int a[][MRX_SIZE_AGENTGAME])
 			_state[i][j] = a[i][j];
 
 	//控制每次都不一样的开关
-	//_rdm.InitGenrand((unsigned long)time(NULL));
+	_rdm.InitGenrand((unsigned long)time(NULL));
 }
 
 /** @brief  A Deconstructor. */

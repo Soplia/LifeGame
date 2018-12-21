@@ -11,7 +11,7 @@
 */
 #include "AgentGame.h"
 
-void Display(double arr[][MRX_SIZE_RULE])
+void MatrixDisplay(double arr[][MRX_SIZE_RULE])
 {
 	for (int i = 0; i < MRX_SIZE_RULE; i++)
 	{
@@ -21,8 +21,19 @@ void Display(double arr[][MRX_SIZE_RULE])
 	}
 }
 
+void MatrixGenerator(int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = 0; j < size; j++)
+			printf("0,");
+		cout << endl;
+	}
+}
+
 int main()
 {
+	/*
 	int initArr[][MRX_SIZE_AGENTGAME] =
 	{
 		0, 2, 0, 0, 1,
@@ -31,14 +42,29 @@ int main()
 		0, 1, 2, 0, 0,
 		0, 0, 0, 0, 2,
 	};
+	*/
+
+	int initArr[][MRX_SIZE_AGENTGAME] =
+	{
+		0,0,0,0,0,0,2,0,0,0,
+		0,0,1,0,0,1,0,0,0,0,
+		0,0,0,1,0,0,2,2,0,0,
+		0,0,0,0,2,0,0,0,0,0,
+		0,2,0,0,0,2,0,0,0,0,
+		0,0,0,0,1,0,0,0,0,0,
+		0,0,0,1,0,0,0,0,0,0,
+		0,0,2,0,0,0,0,0,0,0,
+		0,1,0,0,0,0,0,0,0,0,
+		0,0,0,0,0,0,0,0,0,0
+	};
 
 	AgentGame *t = new  AgentGame(MRX_SIZE_AGENTGAME, initArr);
 	cout << "The inital state :" << endl;
 	t->Display(3);
 	cout << endl;
-	//不能连接时到8不会再改变
-	//能够连接时到20为一个周期
 	t->Simulation(10, 2, 3);
+
+	//MatrixGenerator(10);
 	system("pause");
 	return 0;
 }

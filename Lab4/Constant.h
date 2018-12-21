@@ -32,7 +32,7 @@ static int mti = N + 1;
 const long int MRX_SIZE_AMOUNT = 99999L;
 
 /** @brief  Represent the size of _state & _neigh in AgentGame class. */
-const int MRX_SIZE_AGENTGAME = 5;
+const int MRX_SIZE_AGENTGAME = 10;
 
 /** @brief  Represent the size of  rule matrix. */
 const int MRX_SIZE_RULE = 9;
@@ -87,3 +87,5 @@ const double MRX_PDATOR[][MRX_SIZE_RULE] =
 	0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00,
 	0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00, 0.00
 								};
+
+
