@@ -28,6 +28,9 @@ static int mti = N + 1;
 
 /*************************************************************************************/
 
+/** @brief  Represent the size of _amount in AgentGame class. */
+const long int MRX_SIZE_AMOUNT = 99999L;
+
 /** @brief  Represent the size of _state & _neigh in AgentGame class. */
 const int MRX_SIZE_AGENTGAME = 5;
 

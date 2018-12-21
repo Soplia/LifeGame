@@ -53,6 +53,11 @@ public:
 	*/
 	void Display(int type);
 
+	/** @brief  Display the amount of each agent.
+	*    @param[in] times simulation order
+	*/
+	void DisplayAmount(long int times);
+
 	/** @brief  Assign aim to _state[x][y].
 	*    @param[in] x the x_index of _state.
 	*    @param[in] y the y_index of _state.
@@ -98,8 +103,12 @@ public:
 	*    @param[in] type 1: without torus, 2: with torus.
 	*    @param[in] typeOfDis display type.
 	*/
-	void Simulation(int times, int type, int typeOfDis);
+	void Simulation(long int times, int type, int typeOfDis);
 
+	/** @brief Count the a.
+	*    @param[in] times simulation order.
+	*/
+	void AgentAmount(long int times);
 public:
 	/** @brief  Stock for State . */
 	int **_state;
@@ -109,6 +118,9 @@ public:
 
 	/** @brief  Stock for predator neighborhood number. */
 	int **_neighPdator;
+
+	/** @brief  Stock for amount of each agent . */
+	int _amount[MRX_SIZE_AMOUNT][3];
 
 	/** @brief  Keep the size of  _state & _neigh. */
 	int _size;

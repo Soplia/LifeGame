@@ -11,7 +11,6 @@
 */
 #include "AgentGame.h"
 
-
 void Display(double arr[][MRX_SIZE_RULE])
 {
 	for (int i = 0; i < MRX_SIZE_RULE; i++)
@@ -39,7 +38,7 @@ int main()
 	cout << endl;
 	//不能连接时到8不会再改变
 	//能够连接时到20为一个周期
-	t->Simulation(1, 2, 3);
+	t->Simulation(10, 2, 3);
 	system("pause");
 	return 0;
 }

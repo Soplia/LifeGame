@@ -86,6 +86,8 @@ void AgentGame::InitValue()
 			_neighPrey[i][j] = 0;
 			_neighPdator[i][j] = 0;
 		}
+	for (int i = 0; i < MRX_SIZE_AMOUNT; i++)
+		_amount[i][0] = _amount[i][1] = _amount[i][2] = 0;
 }
 
 /** @brief  Assign zero to  _neighPrey & _neighPdator. */
@@ -202,10 +204,12 @@ int AgentGame::CalculateState(int x, int y)
 		int yIndex = _neighPdator[x][y];
 		int posibility = MRX_PREY[xIndex][yIndex] * 100;
 		int temp = _rdm.GenrandInt100();
-		cout << "Posibility of (" << x << " , " << y << ") / (" << xIndex << " , " \
-			<< yIndex << ") = " << posibility << " Random number = " << temp << endl;
+		/*
+		cout << "_state[" << x << "][" << y << "] with posibility[" << xIndex << "]["\
+			<< yIndex << "] = " << posibility << " ,Random number = " << temp << endl;
 		return  temp <= posibility ? CELL_PREY : CELL_EMPTY;
-		//return _rdm.GenrandInt100() <= posibility ? CELL_PREY : CELL_EMPTY;
+		*/
+		return _rdm.GenrandInt100() <= posibility ? CELL_PREY : CELL_EMPTY;
 	}
 	// occupied by predator
 	else if (_state[x][y] == CELL_PDATOR)
@@ -214,10 +218,12 @@ int AgentGame::CalculateState(int x, int y)
 		int yIndex = _neighPdator[x][y];
 		int posibility = MRX_PDATOR[xIndex][yIndex] * 100;
 		int temp = _rdm.GenrandInt100();
-		cout << "Posibility of (" << x << " , " << y << ") / (" << xIndex << " , " \
-			<< yIndex << ") = " << posibility << " Random number = " << temp << endl;
+		/*
+		cout << "_state[" << x << "][" << y << "] with posibility[" << xIndex << "]["\
+			<< yIndex << "] = " << posibility << " ,Random number = " << temp << endl;
 		return temp <= posibility ? CELL_PDATOR : CELL_EMPTY;
-		//return _rdm.GenrandInt100() <= posibility ? CELL_PDATOR : CELL_EMPTY;
+		*/
+		return _rdm.GenrandInt100() <= posibility ? CELL_PDATOR : CELL_EMPTY;
 	}
 	// unoccupied
 	else if(_state[x][y] == CELL_EMPTY)
@@ -225,23 +231,25 @@ int AgentGame::CalculateState(int x, int y)
 		int xIndex = _neighPrey[x][y];
 		int yIndex = _neighPdator[x][y];
 		int posibility = MRX_PREY_PDATOR[xIndex][yIndex] * 100;
-
+		
+		/*
 		int temp = _rdm.GenrandInt100();
-		cout << "Posibility of (" << x << " , " << y << ") / (" << xIndex << " , " \
-			<< yIndex << ") = " << posibility << " Random number = " << temp << endl;
+		cout << "_state[" << x << "][" << y << "] with posibility[" << xIndex << "]["\
+			<< yIndex << "] = " << posibility << " ,Random number = " << temp << endl;
 		if (xIndex == 0)
 			return temp <= posibility ? CELL_PDATOR : CELL_EMPTY;
 		else if (yIndex == 0)
 			return temp <= posibility ? CELL_PREY : CELL_EMPTY;
 		else
 			return temp <= posibility ? CELL_PREY : CELL_PDATOR;
+		*/
 
-		//if (xIndex == 0)
-			//return _rdm.GenrandInt100() <= posibility ? CELL_PDATOR : CELL_EMPTY;
-		//else if (yIndex == 0)
-		//	return _rdm.GenrandInt100() <= posibility ? CELL_PREY : CELL_EMPTY;
-		//else
-		//	return _rdm.GenrandInt100() <= posibility ? CELL_PREY : CELL_PDATOR;
+		if (xIndex == 0)
+			return _rdm.GenrandInt100() <= posibility ? CELL_PDATOR : CELL_EMPTY;
+		else if (yIndex == 0)
+			return _rdm.GenrandInt100() <= posibility ? CELL_PREY : CELL_EMPTY;
+		else
+			return _rdm.GenrandInt100() <= posibility ? CELL_PREY : CELL_PDATOR;
 	}
 	//Error
 	return -1;
@@ -273,15 +281,17 @@ void AgentGame::UpdateStateWhole()
 *    @param[in] type 1: without torus, 2: with torus.
 *    @param[in] typeOfDis display type.
 */
-void AgentGame::Simulation(int times, int type, int typeOfDis)
+void AgentGame::Simulation(long int times, int type, int typeOfDis)
 {
-	for (int i = 0; i < times; i++)
+	for (long int i = 0; i < times && i < MRX_SIZE_AMOUNT; i++)
 	{
 		ClearNeigh();
 		UpdateNeighWhole(type);
 		UpdateStateWhole();
+		AgentAmount(i);
 		cout << i + 1 << "th :";
 		Display(typeOfDis);
+		DisplayAmount(i);
 	}
 }
 
@@ -345,4 +355,23 @@ void AgentGame::Display(int type)
 	}break;
 	default: cout << "Input the right type (1¡¢2¡¢3) :" << endl;
 	}
+}
+
+/** @brief  Display the amount of each agent.
+*    @param[in] times simulation order
+*/
+void AgentGame::DisplayAmount(long int times)
+{
+	cout << "Predator : " << _amount[times][1] << " Prey : " << _amount[times][2] \
+		<< " Empty : " << _amount[times][0] << endl;
+}
+
+/** @brief Count the a.
+*    @param[in] times simulation order.
+*/
+void AgentGame::AgentAmount(long int times)
+{
+	for (int i = 0; i < _size; i++)
+		for (int j = 0; j < _size; j++)
+			_amount[times][_state[i][j]] ++;
 }
