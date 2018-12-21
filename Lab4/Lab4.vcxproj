@@ -146,11 +146,13 @@
     <ClCompile Include="AgentGame.cpp" />
     <ClCompile Include="BenchMark.cpp" />
     <ClCompile Include="LifeGame.cpp" />
+    <ClCompile Include="MTRandom.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AgentGame.h" />
     <ClInclude Include="Constant.h" />
     <ClInclude Include="LifeGame.h" />
+    <ClInclude Include="MTRandom.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

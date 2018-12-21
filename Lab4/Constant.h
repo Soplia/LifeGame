@@ -13,6 +13,20 @@
 const int MATRIX_SIZE_LIFEGAME = 5;
 
 /*************************************************************************************/
+#define N 624
+#define M 397
+/** @brief  Constant vector A. */
+#define MATRIX_A 0x9908b0dfUL 
+/** @brief  Most significant w-r bits. */
+#define UPPER_MASK 0x80000000UL
+/** @brief  Least significant r bits. */
+#define LOWER_MASK 0x7fffffffUL 
+/** @brief  The array for the state vector. */
+static unsigned long mt[N]; 
+ /** @brief  mti==N+1 means mt[N] is not initialized. */
+static int mti = N + 1; 
+
+/*************************************************************************************/
 
 /** @brief  Represent the size of _state & _neigh in AgentGame class. */
 const int MRX_SIZE_AGENTGAME = 5;
