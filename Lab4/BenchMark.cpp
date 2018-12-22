@@ -10,7 +10,7 @@
 *           Copyright  2018 Jiarui XIE. All rights reserved.
 */
 #include "AgentGame.h"
-
+#include "LifeGame.h"
 void MatrixDisplay(double arr[][MRX_SIZE_RULE])
 {
 	for (int i = 0; i < MRX_SIZE_RULE; i++)
@@ -33,17 +33,6 @@ void MatrixGenerator(int size)
 
 int main()
 {
-	/*
-	int initArr[][MRX_SIZE_AGENTGAME] =
-	{
-		0, 2, 0, 0, 1,
-		0, 0, 1, 0, 0,
-		2, 0, 0, 2, 0,
-		0, 1, 2, 0, 0,
-		0, 0, 0, 0, 2,
-	};
-	*/
-
 	int initArr[][MRX_SIZE_AGENTGAME] =
 	{
 		0,0,0,0,0,0,2,0,0,0,
@@ -68,3 +57,28 @@ int main()
 	system("pause");
 	return 0;
 }
+
+/*
+int main()
+{
+	int initArr[][MATRIX_SIZE_LIFEGAME] =
+	{
+	0, 0, 0, 0, 0,
+	0, 0, 1, 0, 0,
+	0, 0, 0, 1, 0,
+	0, 1, 1, 1, 0,
+	0, 0, 0, 0, 0,
+	};
+
+
+	LifeGame *t = new  LifeGame(MATRIX_SIZE_LIFEGAME, initArr);
+	cout << "The inital state :" << endl;
+	t->Display(3);
+	cout << endl;
+	t->Simulation(10, 2, 1);
+
+	//MatrixGenerator(10);
+	system("pause");
+	return 0;
+}
+*/

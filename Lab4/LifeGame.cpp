@@ -98,7 +98,7 @@ void LifeGame::Display(int type)
 					if (_state[i][j] == 1)
 						cout << "¡ö";
 					else if (_state[i][j] == 0) //  ¡ï ¨‘ ¡õ  ¡ö
-						cout << "¨‘";
+						cout << "¡õ";
 				cout << endl;
 			}
 		}break;
@@ -121,7 +121,7 @@ void LifeGame::Display(int type)
 					if (_state[i][j] == 1)
 						cout << "¡ö";
 					else if (_state[i][j] == 0) //  ¡ï ¨‘ ¡õ  ¡ö
-						cout << "¨‘";
+						cout << "¡õ";
 				cout << endl;
 			}
 			cout << endl;
